@@ -9,7 +9,8 @@ import app from "./config/app.js";
 // Задачи
 
 import clear from "./task/clear.js";
-import pug from "./task/pug.js";
+// import pug from "./task/pug.js";
+import html from "./task/html.js";
 import scss from "./task/scss.js";
 import js from "./task/jscript.js";
 import img from "./task/img.js";
@@ -30,7 +31,8 @@ const server = () => {
 // Наблюдение
 
 const watcher = () => {
-  gulp.watch(path.pug.watch, pug).on("all", browserSync.reload);
+  // gulp.watch(path.pug.watch, pug).on("all", browserSync.reload);
+  gulp.watch(path.html.watch, html).on("all", browserSync.reload);
   gulp.watch(path.scss.watch, scss).on("all", browserSync.reload);
   gulp.watch(path.js.watch, js).on("all", browserSync.reload);
   gulp.watch(path.img.watch, img).on("all", browserSync.reload);
@@ -41,7 +43,8 @@ const watcher = () => {
 
 const build = gulp.series(
   clear,
-  gulp.parallel(pug, scss, js, img, font, svgmin, sprite)
+  // gulp.parallel(pug, scss, js, img, font, svgmin, sprite)
+  gulp.parallel(html, scss, js, img, font, svgmin, sprite)
 )
 
 const dev = gulp.series(
@@ -49,7 +52,8 @@ const dev = gulp.series(
   gulp.parallel(watcher,server)
 )
 
-export { pug };
+// export { pug };
+export { html };
 export { scss };
 export { js };
 export { img };
